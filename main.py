@@ -1,8 +1,7 @@
-from social_distance_spider import SocialDistanceSpider
-from write_data_to_file import WriteDataToFile
+from social_distance_spider import parseCategories
+from write_data_to_file import writeToFile
 
-spider = SocialDistanceSpider("https://sdp.sccgov.org")
-categories = spider.parseCategories()
+categories = parseCategories("https://sdp.sccgov.org")
 
-writer = WriteDataToFile(categories)
-writer.writeToFile()
+writeToFile(categories)
+
