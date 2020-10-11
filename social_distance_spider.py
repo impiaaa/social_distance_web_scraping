@@ -18,22 +18,13 @@ def parseCategories(url):
   # store each link and name of each category in lists
   categories = []
   for linkTag in categoriesContainer.find_all("a"):
-    linkName = linkTag.get_text().strip()
+    linkName = linkTag.get_text(strip=True)
 
     # separate name and number of locations
-    name = ""
-    numberOfLocations = ""
-    # start with last digit of number
-    i = len(linkName) - 2
-    reachedParan = False
-    while i >= 0:
-      if reachedParan:
-        name = linkName[i] + name
-      elif linkName[i] == "(":
-        reachedParan = True
-      else:
-        numberOfLocations = linkName[i] + numberOfLocations
-      i -= 1
+    rparen = linkName.rfind(")")
+    lparen = linkName.rfind("(", 0, rparen)
+    name = linkName[:lparen]
+    numberOfLocations = linkName[lparen+1:rparen]
 
     categories.append({
       "link": linkTag.get("href").strip(),
@@ -59,9 +50,7 @@ def parseCategories(url):
 
     locations = []
     for pageLink in pageLinks:
-      locations += parseLocations(pageLinks[0], pageLink)
-
-    # print(locations)
+      locations.extend(parseLocations(pageLinks[0], pageLink))
 
     # group scraped data with its respective category
     category["locations"] = locations
@@ -75,7 +64,7 @@ def parseLocations(primaryLink, link):
   rtype: [{str}]
   '''
   session = requests.Session()
-  response = session.get(primaryLink)
+  session.get(primaryLink)
   response = session.get(link)
   data = response.text
   soup = BeautifulSoup(data, "lxml")
@@ -95,26 +84,36 @@ def parseLocations(primaryLink, link):
     # some locations have two lines
     locationNames = []
     for locationNameTag in locationNameTags:
-      locationNames.append(locationNameTag.get_text().strip())
+      locationNames.append(locationNameTag.get_text(strip=True))
       
     location["names"] = locationNames
 
     locationDataTags = locationTag.find("div", {"class": "text-left main-info"}).findChild()
 
     # divNum keeps track of iteration of for loop, to put data in location
-    divNum = 0
-    for locationDataDiv in locationDataTags.find_all("div"):
+    for divNum, locationDataDiv in enumerate(locationDataTags.find_all("div")):
       # if this is the phone number
       if divNum == 0:
-        location["phone"] = locationDataDiv.get_text().strip()
+        location["phone"] = locationDataDiv.get_text(strip=True)
       # if this is the first line in the address
       elif divNum == 1:
-        location["address1"] = locationDataDiv.get_text().strip()
+        location["address1"] = locationDataDiv.get_text(strip=True)
       # if this is the second line in the address
       elif divNum == 2:
-        location["address2"] = locationDataDiv.get_text().strip()
-
-      divNum += 1
+        location["address2"] = locationDataDiv.get_text(strip=True)
+    
+    infoDataTags = locationTag.find("div", {"class": "info-column"})
+    
+    location["pdf"] = infoDataTags.find("a", {"class": "download-button"}).get("href")
+    
+    extraInfoTags = infoDataTags.find("div", {"class": "extra-info"})
+    
+    location["replacement"] = extraInfoTags.find("div").get_text(strip=True)
+    dateText = extraInfoTags.find("div", {"class": "text-right"}).get_text(strip=True)
+    if dateText.startswith("Date of Protocol Submission: "):
+      location["date"] = dateText[len("Date of Protocol Submission: "):]
+    else:
+      location["date"] = dateText
 
     # store location in list locations
     locations.append(location)
