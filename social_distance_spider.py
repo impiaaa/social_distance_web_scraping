@@ -60,7 +60,7 @@ def parseLocations(session, link):
     
     infoDataTags = locationTag.find("div", {"class": "info-column"})
     
-    location["pdf"] = infoDataTags.find("a", {"class": "download-button"}).get("href")
+    location["pdf"] = infoDataTags.find("a", {"class": "download-button"}).get("href").replace(' ', '%20')
     
     extraInfoTags = infoDataTags.find("div", {"class": "extra-info"})
     
