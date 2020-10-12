@@ -43,12 +43,9 @@ def parseLocations(session, link):
 
     # add location names to locations object
     # some locations have two lines
-    locationNames = []
-    for locationNameTag in locationNameTags:
-      locationNames.append(locationNameTag.get_text(strip=True))
-      
-    location["names"] = locationNames
-
+    for i, locationNameTag in enumerate(locationNameTags):
+      location["name"+str(i+1)] = locationNameTag.get_text(strip=True)
+    
     locationDataTags = locationTag.find("div", {"class": "text-left main-info"})
 
     locationDataDivs = locationDataTags.findChild().find_all("div")
