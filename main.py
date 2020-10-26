@@ -1,11 +1,17 @@
 from social_distance_spider import parseMain, parseLocations
-from geocode import geocode
-import json
+from geocode import geocodeWorker, geocodeTest
+import threading, queue
 
+NTHREADS = 8
+
+geocodeTest()
+geocodeQueue = queue.Queue(maxsize=NTHREADS)
 session, urlFormat, maxPages = parseMain("https://sdp.sccgov.org")
-output = open("socialdistance.geojsonl", 'w')
 scannedLocations = set()
-scannedGeocodedLocations = set()
+open("socialdistance.geojsonl", 'w') # clear output file
+threads = [threading.Thread(target=geocodeWorker, daemon=True, args=[geocodeQueue]) for i in range(NTHREADS)]
+for thread in threads:
+    thread.start()
 
 for i in range(maxPages+1):
     print("Scraping page", i+1, "of", maxPages)
@@ -17,25 +23,15 @@ for i in range(maxPages+1):
         # Site is sorted newest first, so discard any later duplicate entries
         locTuple = (location['name1'], location.get('name2', None), location['address1'], location['address2'])
         if locTuple in scannedLocations:
-            #print("Skipping", locTuple)
             continue
         scannedLocations.add(locTuple)
         
-        results = geocode(location)
-        if len(results) == 0:
-            print("Could not locate", location['address1']+', '+location['address2'])
-        
-        for geocoded in results:
-            geoLocTuple = (geocoded['properties']['name1'], geocoded['properties'].get('name2', None), tuple(geocoded['geometry']['coordinates']))
-            if geoLocTuple in scannedGeocodedLocations:
-                #print("Skipping", geoLocTuple)
-                continue
-            scannedGeocodedLocations.add(geoLocTuple)
-            
-            json.dump(geocoded, output)
-            output.write('\n')
-        
-    output.flush()
+        geocodeQueue.put(location)
+    
+    for thread in threads:
+        if not thread.is_alive():
+            # these threads never exit normally, so it must have been an exception
+            quit(1)
 
-output.close()
+geocodeQueue.join()
 

@@ -1,5 +1,6 @@
 from urllib.request import urlopen
 from urllib.parse import quote
+import urllib.error
 import json, re
 
 unitTypes = [re.compile(r'(\W)('+part+r')(\W+.*)', flags=re.IGNORECASE) 
@@ -12,14 +13,31 @@ unitTypes.sort(key=lambda part: len(part.pattern), reverse=True)
 
 def load(path, bounded=True):
     url = "http://localhost:4000/v1/"+path+"&size=1"
-    if bounded: url += "&boundary.gid=whosonfirst:county:102081673"
-    #print(url)
+    # First try within the county
+    if bounded:
+        url += "&boundary.gid=whosonfirst:county:102081673"
+    
     result = json.load(urlopen(url))
     assert result['type'] == "FeatureCollection"
+    
     # Interpolation is fine, "fallback" (i.e., street or city centroid) is not.
     result['features'] = [f for f in result['features'] if f['properties']['match_type'] != 'fallback']
-    if len(result['features']) == 0 and bounded: return load(path, False)
-    return result
+    
+    if len(result['features']) == 0 and bounded:
+        # If it wasn't found in the county, try outside
+        return load(path, False)
+    else:
+        return result
+
+def geocodeTest():
+    try:
+        load("search?text=Santa%20Clara%20County")
+    except urllib.error.URLError:
+        print("A test request to the local Pelias server did not succeed. "
+              "It may not be operating properly.")
+        raise
+
+scannedGeocodedLocations = set()
 
 def geocode(row):
     row = {k: v for k, v in row.items() if v}
@@ -41,7 +59,7 @@ def geocode(row):
         # so try changing that out
         for unitType in unitTypes:
             if unitType.search(addr):
-                for replacement in "number", "suite", "unit":
+                for replacement in "number", "unit", "suite":
                     result = load("search?text="+quote(unitType.sub(r'\1'+replacement+r' \3', addr)+", "+row['address2']))
                     if len(result['features']) != 0:
                         break
@@ -56,7 +74,34 @@ def geocode(row):
                 if len(result['features']) != 0:
                     break
 
-    for f in result['features']:
-        f['properties'].update(row)
-    return result['features']
+    if len(result['features']) == 0:
+        print("Could not locate", row['address1']+', '+row['address2'])
+
+    for geocoded in result['features']:
+        geoLocTuple = (row['name1'], row.get('name2', None), tuple(geocoded['geometry']['coordinates']))
+        if geoLocTuple in scannedGeocodedLocations:
+            continue
+        scannedGeocodedLocations.add(geoLocTuple)
+
+        # Remove confusing/unnecessary fields
+        if 'id' in geocoded['properties']: del geocoded['properties']['id']
+        if 'name' in geocoded['properties']: del geocoded['properties']['name']
+        if 'country_gid' in geocoded['properties']: del geocoded['properties']['country_gid']
+        if 'region_gid' in geocoded['properties']: del geocoded['properties']['region_gid']
+        if 'county_gid' in geocoded['properties']: del geocoded['properties']['county_gid']
+        if 'locality_gid' in geocoded['properties']: del geocoded['properties']['locality_gid']
+        if 'neighbourhood_gid' in geocoded['properties']: del geocoded['properties']['neighbourhood_gid']
+        if 'postalcode_gid' in geocoded['properties']: del geocoded['properties']['postalcode_gid']
+        
+        geocoded['properties'].update(row)
+        
+        if geocoded['properties']['source'] == "openstreetmap":
+            geocoded['properties']['osm_id'] = geocoded['properties']['source_id']
+        
+        open("socialdistance.geojsonl", 'a').write(json.dumps(geocoded)+'\n')
+
+def geocodeWorker(q):
+    while True:
+        geocode(q.get())
+        q.task_done()
 
