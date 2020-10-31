@@ -2,10 +2,10 @@ from social_distance_spider import parseMain, parseLocations
 from geocode import geocodeWorker, geocodeTest
 import threading, queue
 
-NTHREADS = 8
+NTHREADS = 1
 
 geocodeTest()
-geocodeQueue = queue.Queue(maxsize=NTHREADS)
+geocodeQueue = queue.Queue(maxsize=NTHREADS*2)
 session, urlFormat, maxPages = parseMain("https://sdp.sccgov.org")
 scannedLocations = set()
 open("socialdistance.geojsonl", 'w') # clear output file
@@ -28,10 +28,5 @@ for i in range(maxPages+1):
         
         geocodeQueue.put(location)
     
-    for thread in threads:
-        if not thread.is_alive():
-            # these threads never exit normally, so it must have been an exception
-            quit(1)
-
 geocodeQueue.join()
 

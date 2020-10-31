@@ -17,7 +17,13 @@ def load(path, bounded=True):
     if bounded:
         url += "&boundary.gid=whosonfirst:county:102081673"
     
-    result = json.load(urlopen(url))
+    for i in range(5):
+        try:
+            result = json.load(urlopen(url))
+        except urllib.error.URLError as e:
+            print(e)
+            continue
+        break
     assert result['type'] == "FeatureCollection"
     
     # Interpolation is fine, "fallback" (i.e., street or city centroid) is not.
@@ -75,7 +81,7 @@ def geocode(row):
                     break
 
     if len(result['features']) == 0:
-        print("Could not locate", row['address1']+', '+row['address2'])
+        open("missed.log", 'a').write(row['address1']+'\t'+row['address2']+'\n')
 
     for geocoded in result['features']:
         geoLocTuple = (row['name1'], row.get('name2', None), tuple(geocoded['geometry']['coordinates']))
