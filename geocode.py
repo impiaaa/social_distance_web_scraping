@@ -94,11 +94,11 @@ def geocode(row):
             continue
         scannedGeocodedLocations.add(geoLocTuple)
         
-        if 'housenumber'   in geocoded['properties']: row['House number (parsed)']  = geocoded['properties']['housenumber']
-        if 'street'        in geocoded['properties']: row['Street name (parsed)']   = geocoded['properties']['street']
-        if 'neighbourhood' in geocoded['properties']: row['Neighbourhood (parsed)'] = geocoded['properties']['neighbourhood']
-        if 'locality'      in geocoded['properties']: row['City (parsed)']          = geocoded['properties']['locality']
-        if 'postalcode'    in geocoded['properties']: row['Zip code (parsed)']      = geocoded['properties']['postalcode']
+        if 'housenumber'   in geocoded['properties']: row['House number (detected)']  = geocoded['properties']['housenumber']
+        if 'street'        in geocoded['properties']: row['Street name (detected)']   = geocoded['properties']['street']
+        if 'neighbourhood' in geocoded['properties']: row['Neighbourhood (detected)'] = geocoded['properties']['neighbourhood']
+        if 'locality'      in geocoded['properties']: row['City (detected)']          = geocoded['properties']['locality']
+        if 'postalcode'    in geocoded['properties']: row['Zip code (detected)']      = geocoded['properties']['postalcode']
         
         if 'addendum' in geocoded['properties'] and 'scc' in geocoded['properties']['addendum']:
             row.update(geocoded['properties']['addendum']['scc'])

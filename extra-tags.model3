@@ -2,329 +2,329 @@
 <Option type="Map">
   <Option name="children" type="Map">
     <Option name="native:adduniquevalueindexfield_1" type="Map">
-      <Option value="true" name="active" type="bool"/>
+      <Option name="active" type="bool" value="true"/>
       <Option name="alg_config"/>
-      <Option value="native:adduniquevalueindexfield" name="alg_id" type="QString"/>
-      <Option value="Add unique value index field" name="component_description" type="QString"/>
-      <Option value="1410.2786885245898" name="component_pos_x" type="double"/>
-      <Option value="591.0632318501171" name="component_pos_y" type="double"/>
+      <Option name="alg_id" type="QString" value="native:adduniquevalueindexfield"/>
+      <Option name="component_description" type="QString" value="Add unique value index field"/>
+      <Option name="component_pos_x" type="double" value="1410.2786885245898"/>
+      <Option name="component_pos_y" type="double" value="591.0632318501171"/>
       <Option name="dependencies"/>
-      <Option value="native:adduniquevalueindexfield_1" name="id" type="QString"/>
+      <Option name="id" type="QString" value="native:adduniquevalueindexfield_1"/>
       <Option name="outputs"/>
-      <Option value="true" name="outputs_collapsed" type="bool"/>
-      <Option value="true" name="parameters_collapsed" type="bool"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
       <Option name="params" type="Map">
         <Option name="FIELD" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="layer_and_id" name="static_value" type="QString"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value="layer_and_id"/>
           </Option>
         </Option>
         <Option name="FIELD_NAME" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="NUM_FIELD" name="static_value" type="QString"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value="NUM_FIELD"/>
           </Option>
         </Option>
         <Option name="INPUT" type="List">
           <Option type="Map">
-            <Option value="qgis:fieldcalculator_1" name="child_id" type="QString"/>
-            <Option value="OUTPUT" name="output_name" type="QString"/>
-            <Option value="1" name="source" type="int"/>
+            <Option name="child_id" type="QString" value="qgis:fieldcalculator_1"/>
+            <Option name="output_name" type="QString" value="OUTPUT"/>
+            <Option name="source" type="int" value="1"/>
           </Option>
         </Option>
       </Option>
     </Option>
     <Option name="native:centroids_1" type="Map">
-      <Option value="true" name="active" type="bool"/>
+      <Option name="active" type="bool" value="true"/>
       <Option name="alg_config"/>
-      <Option value="native:centroids" name="alg_id" type="QString"/>
-      <Option value="Centroids" name="component_description" type="QString"/>
-      <Option value="758.3185011709604" name="component_pos_x" type="double"/>
-      <Option value="313.27400468384064" name="component_pos_y" type="double"/>
+      <Option name="alg_id" type="QString" value="native:centroids"/>
+      <Option name="component_description" type="QString" value="Centroids"/>
+      <Option name="component_pos_x" type="double" value="758.3185011709604"/>
+      <Option name="component_pos_y" type="double" value="313.27400468384064"/>
       <Option name="dependencies"/>
-      <Option value="native:centroids_1" name="id" type="QString"/>
+      <Option name="id" type="QString" value="native:centroids_1"/>
       <Option name="outputs"/>
-      <Option value="true" name="outputs_collapsed" type="bool"/>
-      <Option value="true" name="parameters_collapsed" type="bool"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
       <Option name="params" type="Map">
         <Option name="ALL_PARTS" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="false" name="static_value" type="bool"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="bool" value="false"/>
           </Option>
         </Option>
         <Option name="INPUT" type="List">
           <Option type="Map">
-            <Option value="santaclaracountybusinessespolygons" name="parameter_name" type="QString"/>
-            <Option value="0" name="source" type="int"/>
+            <Option name="parameter_name" type="QString" value="santaclaracountybusinessespolygons"/>
+            <Option name="source" type="int" value="0"/>
           </Option>
         </Option>
       </Option>
     </Option>
     <Option name="native:mergevectorlayers_1" type="Map">
-      <Option value="true" name="active" type="bool"/>
+      <Option name="active" type="bool" value="true"/>
       <Option name="alg_config"/>
-      <Option value="native:mergevectorlayers" name="alg_id" type="QString"/>
-      <Option value="Merge vector layers" name="component_description" type="QString"/>
-      <Option value="925.5784543325526" name="component_pos_x" type="double"/>
-      <Option value="403.1943793911007" name="component_pos_y" type="double"/>
+      <Option name="alg_id" type="QString" value="native:mergevectorlayers"/>
+      <Option name="component_description" type="QString" value="Merge vector layers"/>
+      <Option name="component_pos_x" type="double" value="925.5784543325526"/>
+      <Option name="component_pos_y" type="double" value="403.1943793911007"/>
       <Option name="dependencies"/>
-      <Option value="native:mergevectorlayers_1" name="id" type="QString"/>
+      <Option name="id" type="QString" value="native:mergevectorlayers_1"/>
       <Option name="outputs"/>
-      <Option value="true" name="outputs_collapsed" type="bool"/>
-      <Option value="true" name="parameters_collapsed" type="bool"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
       <Option name="params" type="Map">
         <Option name="CRS" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
+            <Option name="source" type="int" value="2"/>
             <Option name="static_value" type="invalid"/>
           </Option>
         </Option>
         <Option name="LAYERS" type="List">
           <Option type="Map">
-            <Option value="native:centroids_1" name="child_id" type="QString"/>
-            <Option value="OUTPUT" name="output_name" type="QString"/>
-            <Option value="1" name="source" type="int"/>
+            <Option name="child_id" type="QString" value="native:centroids_1"/>
+            <Option name="output_name" type="QString" value="OUTPUT"/>
+            <Option name="source" type="int" value="1"/>
           </Option>
           <Option type="Map">
-            <Option value="santaclaracountybusinessespoints" name="parameter_name" type="QString"/>
-            <Option value="0" name="source" type="int"/>
+            <Option name="parameter_name" type="QString" value="santaclaracountybusinessespoints"/>
+            <Option name="source" type="int" value="0"/>
           </Option>
         </Option>
       </Option>
     </Option>
     <Option name="qgis:createspatialindex_1" type="Map">
-      <Option value="true" name="active" type="bool"/>
+      <Option name="active" type="bool" value="true"/>
       <Option name="alg_config"/>
-      <Option value="qgis:createspatialindex" name="alg_id" type="QString"/>
-      <Option value="Create spatial index for 'landuse'" name="component_description" type="QString"/>
-      <Option value="627.7634660421545" name="component_pos_x" type="double"/>
-      <Option value="547.6744730679159" name="component_pos_y" type="double"/>
+      <Option name="alg_id" type="QString" value="qgis:createspatialindex"/>
+      <Option name="component_description" type="QString" value="Create spatial index for 'landuse'"/>
+      <Option name="component_pos_x" type="double" value="627.7634660421545"/>
+      <Option name="component_pos_y" type="double" value="547.6744730679159"/>
       <Option name="dependencies"/>
-      <Option value="qgis:createspatialindex_1" name="id" type="QString"/>
+      <Option name="id" type="QString" value="qgis:createspatialindex_1"/>
       <Option name="outputs"/>
-      <Option value="true" name="outputs_collapsed" type="bool"/>
-      <Option value="true" name="parameters_collapsed" type="bool"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
       <Option name="params" type="Map">
         <Option name="INPUT" type="List">
           <Option type="Map">
-            <Option value="landuse" name="parameter_name" type="QString"/>
-            <Option value="0" name="source" type="int"/>
+            <Option name="parameter_name" type="QString" value="landuse"/>
+            <Option name="source" type="int" value="0"/>
           </Option>
         </Option>
       </Option>
     </Option>
     <Option name="qgis:createspatialindex_2" type="Map">
-      <Option value="true" name="active" type="bool"/>
+      <Option name="active" type="bool" value="true"/>
       <Option name="alg_config"/>
-      <Option value="qgis:createspatialindex" name="alg_id" type="QString"/>
-      <Option value="Create spatial index for 'socialdistance'" name="component_description" type="QString"/>
-      <Option value="659.3911007025762" name="component_pos_x" type="double"/>
-      <Option value="469.42622950819657" name="component_pos_y" type="double"/>
+      <Option name="alg_id" type="QString" value="qgis:createspatialindex"/>
+      <Option name="component_description" type="QString" value="Create spatial index for 'socialdistance'"/>
+      <Option name="component_pos_x" type="double" value="659.3911007025762"/>
+      <Option name="component_pos_y" type="double" value="469.42622950819657"/>
       <Option name="dependencies"/>
-      <Option value="qgis:createspatialindex_2" name="id" type="QString"/>
+      <Option name="id" type="QString" value="qgis:createspatialindex_2"/>
       <Option name="outputs"/>
-      <Option value="true" name="outputs_collapsed" type="bool"/>
-      <Option value="true" name="parameters_collapsed" type="bool"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
       <Option name="params" type="Map">
         <Option name="INPUT" type="List">
           <Option type="Map">
-            <Option value="socialdistance" name="parameter_name" type="QString"/>
-            <Option value="0" name="source" type="int"/>
+            <Option name="parameter_name" type="QString" value="socialdistance"/>
+            <Option name="source" type="int" value="0"/>
           </Option>
         </Option>
       </Option>
     </Option>
     <Option name="qgis:createspatialindex_3" type="Map">
-      <Option value="true" name="active" type="bool"/>
+      <Option name="active" type="bool" value="true"/>
       <Option name="alg_config"/>
-      <Option value="qgis:createspatialindex" name="alg_id" type="QString"/>
-      <Option value="Create spatial index for 'santa-clara-county-businesses'" name="component_description" type="QString"/>
-      <Option value="1091.0117096018735" name="component_pos_x" type="double"/>
-      <Option value="466.0117096018736" name="component_pos_y" type="double"/>
+      <Option name="alg_id" type="QString" value="qgis:createspatialindex"/>
+      <Option name="component_description" type="QString" value="Create spatial index for 'santa-clara-county-businesses'"/>
+      <Option name="component_pos_x" type="double" value="1091.0117096018735"/>
+      <Option name="component_pos_y" type="double" value="466.0117096018736"/>
       <Option name="dependencies"/>
-      <Option value="qgis:createspatialindex_3" name="id" type="QString"/>
+      <Option name="id" type="QString" value="qgis:createspatialindex_3"/>
       <Option name="outputs"/>
-      <Option value="true" name="outputs_collapsed" type="bool"/>
-      <Option value="true" name="parameters_collapsed" type="bool"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
       <Option name="params" type="Map">
         <Option name="INPUT" type="List">
           <Option type="Map">
-            <Option value="native:mergevectorlayers_1" name="child_id" type="QString"/>
-            <Option value="OUTPUT" name="output_name" type="QString"/>
-            <Option value="1" name="source" type="int"/>
+            <Option name="child_id" type="QString" value="native:mergevectorlayers_1"/>
+            <Option name="output_name" type="QString" value="OUTPUT"/>
+            <Option name="source" type="int" value="1"/>
           </Option>
         </Option>
       </Option>
     </Option>
     <Option name="qgis:distancetonearesthubpoints_1" type="Map">
-      <Option value="true" name="active" type="bool"/>
+      <Option name="active" type="bool" value="true"/>
       <Option name="alg_config"/>
-      <Option value="qgis:distancetonearesthubpoints" name="alg_id" type="QString"/>
-      <Option value="Distance to nearest hub (points)" name="component_description" type="QString"/>
-      <Option value="1567.5784543325526" name="component_pos_x" type="double"/>
-      <Option value="699.2646370023419" name="component_pos_y" type="double"/>
+      <Option name="alg_id" type="QString" value="qgis:distancetonearesthubpoints"/>
+      <Option name="component_description" type="QString" value="Distance to nearest hub (points)"/>
+      <Option name="component_pos_x" type="double" value="1567.5784543325526"/>
+      <Option name="component_pos_y" type="double" value="699.2646370023419"/>
       <Option name="dependencies"/>
-      <Option value="qgis:distancetonearesthubpoints_1" name="id" type="QString"/>
+      <Option name="id" type="QString" value="qgis:distancetonearesthubpoints_1"/>
       <Option name="outputs" type="Map">
         <Option name="socialdistance-plus" type="Map">
-          <Option value="qgis:distancetonearesthubpoints_1" name="child_id" type="QString"/>
-          <Option value="socialdistance-plus" name="component_description" type="QString"/>
-          <Option value="1767.5784543325526" name="component_pos_x" type="double"/>
-          <Option value="744.2646370023419" name="component_pos_y" type="double"/>
+          <Option name="child_id" type="QString" value="qgis:distancetonearesthubpoints_1"/>
+          <Option name="component_description" type="QString" value="socialdistance-plus"/>
+          <Option name="component_pos_x" type="double" value="1767.5784543325526"/>
+          <Option name="component_pos_y" type="double" value="744.2646370023419"/>
           <Option name="default_value" type="invalid"/>
-          <Option value="false" name="mandatory" type="bool"/>
-          <Option value="socialdistance-plus" name="name" type="QString"/>
-          <Option value="OUTPUT" name="output_name" type="QString"/>
+          <Option name="mandatory" type="bool" value="false"/>
+          <Option name="name" type="QString" value="socialdistance-plus"/>
+          <Option name="output_name" type="QString" value="OUTPUT"/>
         </Option>
       </Option>
-      <Option value="true" name="outputs_collapsed" type="bool"/>
-      <Option value="true" name="parameters_collapsed" type="bool"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
       <Option name="params" type="Map">
         <Option name="FIELD" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="NUM_FIELD" name="static_value" type="QString"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value="NUM_FIELD"/>
           </Option>
         </Option>
         <Option name="HUBS" type="List">
           <Option type="Map">
-            <Option value="native:adduniquevalueindexfield_1" name="child_id" type="QString"/>
-            <Option value="OUTPUT" name="output_name" type="QString"/>
-            <Option value="1" name="source" type="int"/>
+            <Option name="child_id" type="QString" value="native:adduniquevalueindexfield_1"/>
+            <Option name="output_name" type="QString" value="OUTPUT"/>
+            <Option name="source" type="int" value="1"/>
           </Option>
         </Option>
         <Option name="INPUT" type="List">
           <Option type="Map">
-            <Option value="qgis:joinattributesbylocation_1" name="child_id" type="QString"/>
-            <Option value="OUTPUT" name="output_name" type="QString"/>
-            <Option value="1" name="source" type="int"/>
+            <Option name="child_id" type="QString" value="qgis:joinattributesbylocation_1"/>
+            <Option name="output_name" type="QString" value="OUTPUT"/>
+            <Option name="source" type="int" value="1"/>
           </Option>
         </Option>
         <Option name="UNIT" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="0" name="static_value" type="int"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="int" value="0"/>
           </Option>
         </Option>
       </Option>
     </Option>
     <Option name="qgis:fieldcalculator_1" type="Map">
-      <Option value="true" name="active" type="bool"/>
+      <Option name="active" type="bool" value="true"/>
       <Option name="alg_config"/>
-      <Option value="qgis:fieldcalculator" name="alg_id" type="QString"/>
-      <Option value="Field calculator" name="component_description" type="QString"/>
-      <Option value="1253.4285714285716" name="component_pos_x" type="double"/>
-      <Option value="528.8126463700233" name="component_pos_y" type="double"/>
+      <Option name="alg_id" type="QString" value="qgis:fieldcalculator"/>
+      <Option name="component_description" type="QString" value="Field calculator"/>
+      <Option name="component_pos_x" type="double" value="1253.4285714285716"/>
+      <Option name="component_pos_y" type="double" value="528.8126463700233"/>
       <Option name="dependencies"/>
-      <Option value="qgis:fieldcalculator_1" name="id" type="QString"/>
+      <Option name="id" type="QString" value="qgis:fieldcalculator_1"/>
       <Option name="outputs"/>
-      <Option value="true" name="outputs_collapsed" type="bool"/>
-      <Option value="true" name="parameters_collapsed" type="bool"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
       <Option name="params" type="Map">
         <Option name="FIELD_LENGTH" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="50" name="static_value" type="int"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="int" value="50"/>
           </Option>
         </Option>
         <Option name="FIELD_NAME" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="layer_and_id" name="static_value" type="QString"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value="layer_and_id"/>
           </Option>
         </Option>
         <Option name="FIELD_PRECISION" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="3" name="static_value" type="int"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="int" value="3"/>
           </Option>
         </Option>
         <Option name="FIELD_TYPE" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="2" name="static_value" type="int"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="int" value="2"/>
           </Option>
         </Option>
         <Option name="FORMULA" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="layer||'/'||osm_id" name="static_value" type="QString"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value="layer||'/'||osm_id"/>
           </Option>
         </Option>
         <Option name="INPUT" type="List">
           <Option type="Map">
-            <Option value="qgis:createspatialindex_3" name="child_id" type="QString"/>
-            <Option value="OUTPUT" name="output_name" type="QString"/>
-            <Option value="1" name="source" type="int"/>
+            <Option name="child_id" type="QString" value="qgis:createspatialindex_3"/>
+            <Option name="output_name" type="QString" value="OUTPUT"/>
+            <Option name="source" type="int" value="1"/>
           </Option>
         </Option>
         <Option name="NEW_FIELD" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="true" name="static_value" type="bool"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="bool" value="true"/>
           </Option>
         </Option>
       </Option>
     </Option>
     <Option name="qgis:joinattributesbylocation_1" type="Map">
-      <Option value="true" name="active" type="bool"/>
+      <Option name="active" type="bool" value="true"/>
       <Option name="alg_config"/>
-      <Option value="qgis:joinattributesbylocation" name="alg_id" type="QString"/>
-      <Option value="Join attributes by location" name="component_description" type="QString"/>
-      <Option value="882.1779859484777" name="component_pos_x" type="double"/>
-      <Option value="594.0421545667447" name="component_pos_y" type="double"/>
+      <Option name="alg_id" type="QString" value="qgis:joinattributesbylocation"/>
+      <Option name="component_description" type="QString" value="Join attributes by location"/>
+      <Option name="component_pos_x" type="double" value="882.1779859484777"/>
+      <Option name="component_pos_y" type="double" value="594.0421545667447"/>
       <Option name="dependencies"/>
-      <Option value="qgis:joinattributesbylocation_1" name="id" type="QString"/>
+      <Option name="id" type="QString" value="qgis:joinattributesbylocation_1"/>
       <Option name="outputs"/>
-      <Option value="true" name="outputs_collapsed" type="bool"/>
-      <Option value="true" name="parameters_collapsed" type="bool"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
       <Option name="params" type="Map">
         <Option name="DISCARD_NONMATCHING" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="false" name="static_value" type="bool"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="bool" value="false"/>
           </Option>
         </Option>
         <Option name="INPUT" type="List">
           <Option type="Map">
-            <Option value="qgis:createspatialindex_2" name="child_id" type="QString"/>
-            <Option value="OUTPUT" name="output_name" type="QString"/>
-            <Option value="1" name="source" type="int"/>
+            <Option name="child_id" type="QString" value="qgis:createspatialindex_2"/>
+            <Option name="output_name" type="QString" value="OUTPUT"/>
+            <Option name="source" type="int" value="1"/>
           </Option>
         </Option>
         <Option name="JOIN" type="List">
           <Option type="Map">
-            <Option value="qgis:createspatialindex_1" name="child_id" type="QString"/>
-            <Option value="OUTPUT" name="output_name" type="QString"/>
-            <Option value="1" name="source" type="int"/>
+            <Option name="child_id" type="QString" value="qgis:createspatialindex_1"/>
+            <Option name="output_name" type="QString" value="OUTPUT"/>
+            <Option name="source" type="int" value="1"/>
           </Option>
         </Option>
         <Option name="JOIN_FIELDS" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="ORIGGPLU, GENGPLU" name="static_value" type="QString"/>
+            <Option name="parameter_name" type="QString" value="fields"/>
+            <Option name="source" type="int" value="0"/>
           </Option>
         </Option>
         <Option name="METHOD" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="1" name="static_value" type="int"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="int" value="1"/>
           </Option>
         </Option>
         <Option name="PREDICATE" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
+            <Option name="source" type="int" value="2"/>
             <Option name="static_value" type="List">
-              <Option value="5" type="int"/>
+              <Option type="int" value="5"/>
             </Option>
           </Option>
         </Option>
         <Option name="PREFIX" type="List">
           <Option type="Map">
-            <Option value="2" name="source" type="int"/>
-            <Option value="" name="static_value" type="QString"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value=""/>
           </Option>
         </Option>
       </Option>
@@ -332,89 +332,106 @@
   </Option>
   <Option name="help"/>
   <Option name="modelVariables"/>
-  <Option value="" name="model_group" type="QString"/>
-  <Option value="Tag businesses w zone and distance" name="model_name" type="QString"/>
+  <Option name="model_group" type="QString" value=""/>
+  <Option name="model_name" type="QString" value="Tag businesses w zone and distance"/>
   <Option name="parameterDefinitions" type="Map">
+    <Option name="fields" type="Map">
+      <Option name="allow_multiple" type="bool" value="true"/>
+      <Option name="data_type" type="int" value="-1"/>
+      <Option name="default" type="invalid"/>
+      <Option name="description" type="QString" value="fields"/>
+      <Option name="flags" type="int" value="0"/>
+      <Option name="metadata"/>
+      <Option name="name" type="QString" value="fields"/>
+      <Option name="parameter_type" type="QString" value="field"/>
+      <Option name="parent_layer" type="QString" value="landuse"/>
+    </Option>
     <Option name="landuse" type="Map">
       <Option name="data_types" type="List">
-        <Option value="2" type="int"/>
+        <Option type="int" value="2"/>
       </Option>
       <Option name="default" type="invalid"/>
-      <Option value="landuse" name="description" type="QString"/>
-      <Option value="0" name="flags" type="int"/>
+      <Option name="description" type="QString" value="landuse"/>
+      <Option name="flags" type="int" value="0"/>
       <Option name="metadata"/>
-      <Option value="landuse" name="name" type="QString"/>
-      <Option value="vector" name="parameter_type" type="QString"/>
+      <Option name="name" type="QString" value="landuse"/>
+      <Option name="parameter_type" type="QString" value="vector"/>
     </Option>
     <Option name="qgis:distancetonearesthubpoints_1:socialdistance-plus" type="Map">
-      <Option value="true" name="create_by_default" type="bool"/>
-      <Option value="0" name="data_type" type="int"/>
+      <Option name="create_by_default" type="bool" value="true"/>
+      <Option name="data_type" type="int" value="0"/>
       <Option name="default" type="invalid"/>
-      <Option value="socialdistance-plus" name="description" type="QString"/>
-      <Option value="0" name="flags" type="int"/>
+      <Option name="description" type="QString" value="socialdistance-plus"/>
+      <Option name="flags" type="int" value="0"/>
       <Option name="metadata"/>
-      <Option value="qgis:distancetonearesthubpoints_1:socialdistance-plus" name="name" type="QString"/>
-      <Option value="sink" name="parameter_type" type="QString"/>
-      <Option value="true" name="supports_non_file_outputs" type="bool"/>
+      <Option name="name" type="QString" value="qgis:distancetonearesthubpoints_1:socialdistance-plus"/>
+      <Option name="parameter_type" type="QString" value="sink"/>
+      <Option name="supports_non_file_outputs" type="bool" value="true"/>
     </Option>
     <Option name="santaclaracountybusinessespoints" type="Map">
       <Option name="data_types" type="List">
-        <Option value="0" type="int"/>
+        <Option type="int" value="0"/>
       </Option>
       <Option name="default" type="invalid"/>
-      <Option value="santa-clara-county-businesses points" name="description" type="QString"/>
-      <Option value="0" name="flags" type="int"/>
+      <Option name="description" type="QString" value="santa-clara-county-businesses points"/>
+      <Option name="flags" type="int" value="0"/>
       <Option name="metadata"/>
-      <Option value="santaclaracountybusinessespoints" name="name" type="QString"/>
-      <Option value="vector" name="parameter_type" type="QString"/>
+      <Option name="name" type="QString" value="santaclaracountybusinessespoints"/>
+      <Option name="parameter_type" type="QString" value="vector"/>
     </Option>
     <Option name="santaclaracountybusinessespolygons" type="Map">
       <Option name="data_types" type="List">
-        <Option value="2" type="int"/>
+        <Option type="int" value="2"/>
       </Option>
       <Option name="default" type="invalid"/>
-      <Option value="santa-clara-county-businesses polygons" name="description" type="QString"/>
-      <Option value="0" name="flags" type="int"/>
+      <Option name="description" type="QString" value="santa-clara-county-businesses polygons"/>
+      <Option name="flags" type="int" value="0"/>
       <Option name="metadata"/>
-      <Option value="santaclaracountybusinessespolygons" name="name" type="QString"/>
-      <Option value="vector" name="parameter_type" type="QString"/>
+      <Option name="name" type="QString" value="santaclaracountybusinessespolygons"/>
+      <Option name="parameter_type" type="QString" value="vector"/>
     </Option>
     <Option name="socialdistance" type="Map">
       <Option name="data_types" type="List">
-        <Option value="0" type="int"/>
+        <Option type="int" value="0"/>
       </Option>
       <Option name="default" type="invalid"/>
-      <Option value="socialdistance" name="description" type="QString"/>
-      <Option value="0" name="flags" type="int"/>
+      <Option name="description" type="QString" value="socialdistance"/>
+      <Option name="flags" type="int" value="0"/>
       <Option name="metadata"/>
-      <Option value="socialdistance" name="name" type="QString"/>
-      <Option value="vector" name="parameter_type" type="QString"/>
+      <Option name="name" type="QString" value="socialdistance"/>
+      <Option name="parameter_type" type="QString" value="vector"/>
     </Option>
   </Option>
   <Option name="parameters" type="Map">
+    <Option name="fields" type="Map">
+      <Option name="component_description" type="QString" value="fields"/>
+      <Option name="component_pos_x" type="double" value="338.81733021077275"/>
+      <Option name="component_pos_y" type="double" value="579"/>
+      <Option name="name" type="QString" value="fields"/>
+    </Option>
     <Option name="landuse" type="Map">
-      <Option value="landuse" name="component_description" type="QString"/>
-      <Option value="139.1545667447307" name="component_pos_x" type="double"/>
-      <Option value="444.5245901639345" name="component_pos_y" type="double"/>
-      <Option value="landuse" name="name" type="QString"/>
+      <Option name="component_description" type="QString" value="landuse"/>
+      <Option name="component_pos_x" type="double" value="139.1545667447307"/>
+      <Option name="component_pos_y" type="double" value="444.5245901639345"/>
+      <Option name="name" type="QString" value="landuse"/>
     </Option>
     <Option name="santaclaracountybusinessespoints" type="Map">
-      <Option value="santaclaracountybusinessespoints" name="component_description" type="QString"/>
-      <Option value="550.8173302107728" name="component_pos_x" type="double"/>
-      <Option value="358.11475409836066" name="component_pos_y" type="double"/>
-      <Option value="santaclaracountybusinessespoints" name="name" type="QString"/>
+      <Option name="component_description" type="QString" value="santaclaracountybusinessespoints"/>
+      <Option name="component_pos_x" type="double" value="550.8173302107728"/>
+      <Option name="component_pos_y" type="double" value="358.11475409836066"/>
+      <Option name="name" type="QString" value="santaclaracountybusinessespoints"/>
     </Option>
     <Option name="santaclaracountybusinessespolygons" type="Map">
-      <Option value="santaclaracountybusinessespolygons" name="component_description" type="QString"/>
-      <Option value="539.2786885245903" name="component_pos_x" type="double"/>
-      <Option value="272.5480093676815" name="component_pos_y" type="double"/>
-      <Option value="santaclaracountybusinessespolygons" name="name" type="QString"/>
+      <Option name="component_description" type="QString" value="santaclaracountybusinessespolygons"/>
+      <Option name="component_pos_x" type="double" value="539.2786885245903"/>
+      <Option name="component_pos_y" type="double" value="272.5480093676815"/>
+      <Option name="name" type="QString" value="santaclaracountybusinessespolygons"/>
     </Option>
     <Option name="socialdistance" type="Map">
-      <Option value="socialdistance" name="component_description" type="QString"/>
-      <Option value="434.0093676814988" name="component_pos_x" type="double"/>
-      <Option value="427.1756440281031" name="component_pos_y" type="double"/>
-      <Option value="socialdistance" name="name" type="QString"/>
+      <Option name="component_description" type="QString" value="socialdistance"/>
+      <Option name="component_pos_x" type="double" value="434.0093676814988"/>
+      <Option name="component_pos_y" type="double" value="427.1756440281031"/>
+      <Option name="name" type="QString" value="socialdistance"/>
     </Option>
   </Option>
 </Option>
