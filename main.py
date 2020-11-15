@@ -1,6 +1,7 @@
 from social_distance_spider import parseMain, parseLocations
 from geocode import geocodeWorker, geocodeTest
 import threading, queue
+from fieldnames import *
 
 NTHREADS = 1
 
@@ -17,11 +18,11 @@ for i in range(maxPages+1):
     print("Scraping page", i+1, "of", maxPages)
     link = urlFormat.format(i)
     for location in parseLocations(session, link):
-        if location['address1'] == "No physical address":
+        if location['Address (from protocol)'] == "No physical address":
             continue
         
         # Site is sorted newest first, so discard any later duplicate entries
-        locTuple = (location['name1'], location.get('name2', None), location['address1'], location['address2'])
+        locTuple = (location[NAME1], location.get(NAME2, None), location[ADDR1], location[ADDR2])
         if locTuple in scannedLocations:
             continue
         scannedLocations.add(locTuple)

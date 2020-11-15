@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import math
 from urllib import parse as urlparse
+from fieldnames import *
 
 def parseMain(primaryLink):
   session = requests.Session()
@@ -43,30 +44,34 @@ def parseLocations(session, link):
 
     # add location names to locations object
     # some locations have two lines
-    for i, locationNameTag in enumerate(locationNameTags):
-      location["name"+str(i+1)] = locationNameTag.get_text(strip=True)
+    location[NAME1] = locationNameTags[0].get_text(strip=True)
+    if len(locationNameTags) > 1: location[NAME2] = locationNameTags[1].get_text(strip=True)
     
     locationDataTags = locationTag.find("div", {"class": "text-left main-info"})
 
     locationDataDivs = locationDataTags.findChild().find_all("div")
-    if len(locationDataDivs) > 0: location["phone"] = locationDataDivs[0].get_text(strip=True)
-    if len(locationDataDivs) > 1: location["address1"] = locationDataDivs[1].get_text(strip=True)
-    if len(locationDataDivs) > 2: location["address2"] = locationDataDivs[2].get_text(strip=True)
+    #if len(locationDataDivs) > 0: location[PHONE] = locationDataDivs[0].get_text(strip=True)
+    if len(locationDataDivs) > 1: location[ADDR1] = locationDataDivs[1].get_text(strip=True)
+    if len(locationDataDivs) > 2: location[ADDR2] = locationDataDivs[2].get_text(strip=True)
     
-    location["category"] = locationDataTags.find("div", {"class": "extra-info"}).get_text(strip=True)
+    location[CATEGORY] = locationDataTags.find("div", {"class": "extra-info"}).get_text(strip=True)
     
     infoDataTags = locationTag.find("div", {"class": "info-column"})
     
-    location["pdf"] = infoDataTags.find("a", {"class": "download-button"}).get("href").replace(' ', '%20')
+    pdf = infoDataTags.find("a", {"class": "download-button"}).get("href").replace(' ', '%20')
+    urlbase = 'https://saesdp.sccgov.org/sdpdocs/'
+    assert pdf.startswith(urlbase) and '-' in pdf, pdf
+    location[PDF] = pdf
+    location['id'] = int(pdf[len(urlbase):pdf.find('-', len(urlbase))])
     
     extraInfoTags = infoDataTags.find("div", {"class": "extra-info"})
     
-    location["replacement"] = extraInfoTags.find("div").get_text(strip=True)
+    location[REPLACEMENT] = extraInfoTags.find("div").get_text(strip=True)
     dateText = extraInfoTags.find("div", {"class": "text-right"}).get_text(strip=True)
     if dateText.startswith("Date of Protocol Submission: "):
-      location["date"] = dateText[len("Date of Protocol Submission: "):]
+      location[DATE] = dateText[len("Date of Protocol Submission: "):]
     else:
-      location["date"] = dateText
+      location[DATE] = dateText
 
     # store location in list locations
     locations.append(location)

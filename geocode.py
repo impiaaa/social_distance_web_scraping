@@ -2,6 +2,7 @@ from urllib.request import urlopen
 from urllib.parse import quote
 import urllib.error
 import json, re
+from fieldnames import *
 
 unitTypes = [re.compile(r'(\W)('+part+r')(\W+.*)', flags=re.IGNORECASE) 
              for line in open("unit_types_numbered.txt")
@@ -47,18 +48,21 @@ scannedGeocodedLocations = set()
 
 def geocode(row):
     row = {k: v for k, v in row.items() if v}
-    i = row['address2'].rfind(' ')
-    zipcode = row['address2'][i+1:]
-    i = row['address2'].rfind(' ', 0, i-1)
-    city = row['address2'][:i]
-    addr = row['address1']
+    addr = row[ADDR1]
+    addr2 = row[ADDR2]
     
-    # first try strict search
-    result = load("search/structured?address="+quote(addr)+"&locality="+quote(city)+"&postalcode="+quote(zipcode))
+    i = addr2.rfind(' CA ')
+    if i == -1:
+        result = {'features': []}
+    else:
+        # first try strict search
+        zipcode = addr2[i+4:]
+        city = addr2[:i]
+        result = load("search/structured?address="+quote(addr)+"&locality="+quote(city)+"&postalcode="+quote(zipcode))
     
     if len(result['features']) == 0:
         # let libpostal have a try
-        result = load("search?text="+quote(addr+", "+row['address2']))
+        result = load("search?text="+quote(addr+", "+addr2))
     
     if len(result['features']) == 0:
         # the most common failure case seems to be misdetected unit prefix,
@@ -66,7 +70,7 @@ def geocode(row):
         for unitType in unitTypes:
             if unitType.search(addr):
                 for replacement in "number", "unit", "suite":
-                    result = load("search?text="+quote(unitType.sub(r'\1'+replacement+r' \3', addr)+", "+row['address2']))
+                    result = load("search?text="+quote(unitType.sub(r'\1'+replacement+r' \3', addr)+", "+addr2))
                     if len(result['features']) != 0:
                         break
                 if len(result['features']) != 0:
@@ -76,34 +80,36 @@ def geocode(row):
         # now just strip the unit
         for unitType in unitTypes:
             if unitType.search(addr):
-                result = load("search?text="+quote(unitType.sub(r'\1', addr)+", "+row['address2']))
+                result = load("search?text="+quote(unitType.sub(r'\1', addr)+", "+addr2))
                 if len(result['features']) != 0:
                     break
 
     if len(result['features']) == 0:
-        open("missed.log", 'a').write(row['address1']+'\t'+row['address2']+'\n')
+        # no luck
+        open("missed.log", 'a').write(addr+'\t'+addr2+'\n')
 
     for geocoded in result['features']:
-        geoLocTuple = (row['name1'], row.get('name2', None), tuple(geocoded['geometry']['coordinates']))
+        geoLocTuple = (row[NAME1], row.get(NAME2, None), tuple(geocoded['geometry']['coordinates']))
         if geoLocTuple in scannedGeocodedLocations:
             continue
         scannedGeocodedLocations.add(geoLocTuple)
-
-        # Remove confusing/unnecessary fields
-        if 'id' in geocoded['properties']: del geocoded['properties']['id']
-        if 'name' in geocoded['properties']: del geocoded['properties']['name']
-        if 'country_gid' in geocoded['properties']: del geocoded['properties']['country_gid']
-        if 'region_gid' in geocoded['properties']: del geocoded['properties']['region_gid']
-        if 'county_gid' in geocoded['properties']: del geocoded['properties']['county_gid']
-        if 'locality_gid' in geocoded['properties']: del geocoded['properties']['locality_gid']
-        if 'neighbourhood_gid' in geocoded['properties']: del geocoded['properties']['neighbourhood_gid']
-        if 'postalcode_gid' in geocoded['properties']: del geocoded['properties']['postalcode_gid']
         
-        geocoded['properties'].update(row)
+        if 'housenumber'   in geocoded['properties']: row['House number (parsed)']  = geocoded['properties']['housenumber']
+        if 'street'        in geocoded['properties']: row['Street name (parsed)']   = geocoded['properties']['street']
+        if 'neighbourhood' in geocoded['properties']: row['Neighbourhood (parsed)'] = geocoded['properties']['neighbourhood']
+        if 'locality'      in geocoded['properties']: row['City (parsed)']          = geocoded['properties']['locality']
+        if 'postalcode'    in geocoded['properties']: row['Zip code (parsed)']      = geocoded['properties']['postalcode']
+        
+        if 'addendum' in geocoded['properties'] and 'scc' in geocoded['properties']['addendum']:
+            row.update(geocoded['properties']['addendum']['scc'])
+
+        if 'gid' in geocoded['properties']: row['gid'] = geocoded['properties']['gid']
         
         if geocoded['properties']['source'] == "openstreetmap":
-            geocoded['properties']['osm_id'] = geocoded['properties']['source_id']
+            row['osm_id'] = geocoded['properties']['source_id']
         
+        geocoded['properties'] = row
+
         open("socialdistance.geojsonl", 'a').write(json.dumps(geocoded)+'\n')
 
 def geocodeWorker(q):
