@@ -39,7 +39,7 @@ def load(path, bounded=True):
 def geocodeTest():
     try:
         load("search?text=Santa%20Clara%20County")
-    except urllib.error.URLError:
+    except Exception:
         print("A test request to the local Pelias server did not succeed. "
               "It may not be operating properly.")
         raise
