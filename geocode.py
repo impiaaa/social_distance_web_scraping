@@ -18,6 +18,7 @@ def load(path, bounded=True):
     if bounded:
         url += "&boundary.gid=whosonfirst:county:102081673"
     
+    result = None
     for i in range(5):
         try:
             result = json.load(urlopen(url))
