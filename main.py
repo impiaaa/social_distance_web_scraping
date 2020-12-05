@@ -20,13 +20,13 @@ for thread in threads:
     thread.start()
 
 for i in range(maxPages+1):
-    print("Scraping page", i+1, "of", maxPages)
+    print("Scraping page", i+1, "of", maxPages+1)
     link = urlFormat.format(i)
     for location in parseLocations(session, link):
         if location[ADDR1] == "No physical address":
             continue
         if location['id'] in previouslyScannedIds:
-            break
+            continue
         
         # Site is sorted newest first, so discard any later duplicate entries
         locTuple = (location[NAME1], location.get(NAME2, None), location[ADDR1], location[ADDR2])
@@ -35,9 +35,6 @@ for i in range(maxPages+1):
         scannedLocations.add(locTuple)
         
         geocodeQueue.put(location)
-    
-    if location['id'] in previouslyScannedIds:
-        break
     
 geocodeQueue.join()
 
