@@ -1,7 +1,9 @@
 import sys, json, tempfile, os
 from fieldnames import *
 from urllib.request import Request, urlopen
+from urllib.error import URLError
 from base64 import b64decode
+from time import sleep
 
 infile = open(sys.argv[1])
 infilepath, infilenameext = os.path.split(sys.argv[1])
@@ -22,7 +24,16 @@ for i, line in enumerate(infile):
         if val is None:
             del props[key]
     
-    doc = urlopen(Request(props[PDF], method="HEAD"))
+    for i in range(5):
+        try:
+            doc = urlopen(Request(props[PDF], method="HEAD"))
+        except URLError:
+            if i == 4:
+                raise
+            else:
+                sleep(1)
+                continue
+        break
     props[CATEGORY] = b64decode(doc.getheader("x-ms-meta-typeofbusinessother")).decode('utf-8')
     
     print("is", props[CATEGORY])
