@@ -23,9 +23,10 @@ def load(path, bounded=True):
         try:
             result = json.load(urlopen(url))
         except urllib.error.URLError as e:
-            print(e)
+            print(url, e)
             continue
         break
+    if result is None: return {'features': []}
     assert result['type'] == "FeatureCollection"
     
     # Interpolation is fine, "fallback" (i.e., street or city centroid) is not.
@@ -59,10 +60,13 @@ def geocode(row):
         # first try strict search
         zipcode = addr2[i+4:]
         city = addr2[:i]
-        result = load("search/structured?address="+quote(addr)+"&locality="+quote(city)+"&postalcode="+quote(zipcode))
+        url = "search/structured?address="+quote(addr)+"&postalcode="+quote(zipcode)
+        if city != "Unincorporated": url += "&locality="+quote(city)
+        result = load(url)
     
     if len(result['features']) == 0:
         # let libpostal have a try
+        if addr2.startswith("Unincorporated CA "): addr2 = addr2[15:]
         result = load("search?text="+quote(addr+", "+addr2))
     
     if len(result['features']) == 0:
